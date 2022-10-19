@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/albums', AlbumController::class);
+Route::apiResource('/artists', ArtistController::class);

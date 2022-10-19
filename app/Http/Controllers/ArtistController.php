@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AlbumCollection;
-use App\Models\Album;
+use App\Models\Artist;
 use Illuminate\Http\Request;
 
-class AlbumController extends Controller
+class ArtistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        $albums = Album::all();
-        return new AlbumCollection($albums);
-        return new AlbumCollection(Album::all());
+        //
     }
 
     /**
@@ -34,10 +31,10 @@ class AlbumController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show(Artist $artist)
     {
         //
     }
@@ -46,10 +43,10 @@ class AlbumController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update(Request $request, Artist $artist)
     {
         //
     }
@@ -57,10 +54,10 @@ class AlbumController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Album  $album
+     * @param  \App\Models\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Album $album)
+    public function destroy(Artist $artist)
     {
         //
     }
