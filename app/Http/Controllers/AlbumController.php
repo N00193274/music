@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\AlbumCollection;
+use App\Http\Resources\AlbumResource;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,8 @@ class AlbumController extends Controller
         $album = Album::create($request->only([
             'title', 'genre', 'artist', 'releaseyear'
         ]));
+
+        return new AlbumResource($album);
     }
 
     /**
@@ -59,7 +62,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        //
+        return new AlbumResource($album);
     }
 
     /**
