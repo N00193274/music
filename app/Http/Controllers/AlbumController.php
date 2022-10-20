@@ -11,12 +11,30 @@ class AlbumController extends Controller
     /**
      * Display a listing of the resource.
      *
+ * @OA\Get(
+ *     path="/api/albums",
+ *     description="Displays all the albums",
+ *     tags={"Albums"},
+     *      @OA\Response(
+     *        response=200,
+     *        description="OK",
+     *      ),
+     *      @OA\Response(
+     *        response=401,
+     *        description="unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *        response=403,
+     *        description="Forbidden",
+     *      )
+ *)
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $albums = Album::all();
-        return new AlbumCollection($albums);
+        // $albums = Album::all();
+       // return new AlbumCollection($albums);
         return new AlbumCollection(Album::all());
     }
 
