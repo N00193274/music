@@ -74,7 +74,11 @@ class AlbumController extends Controller
      */
     public function update(Request $request, Album $album)
     {
-        //
+        $album->update($request->only([
+            'title', 'genre', 'artist', 'releaseyear'
+        ]));
+
+        return new AlbumResource($album);
     }
 
     /**
