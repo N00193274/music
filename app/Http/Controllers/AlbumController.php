@@ -46,7 +46,9 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $album = Album::create($request->only([
+            'title', 'genre', 'artist', 'releaseyear'
+        ]));
     }
 
     /**
