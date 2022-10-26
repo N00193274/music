@@ -42,6 +42,15 @@ class AlbumController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @OA\Post(
+     *   path="/api/albums",
+     *   operationId="store",
+     *   tags={"Albums"},
+     *   summary="Create new Album",
+     *   description="Stores Album in DB",
+     *   @OA 
+     * )
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -81,7 +90,7 @@ class AlbumController extends Controller
 
         return new AlbumResource($album);
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
