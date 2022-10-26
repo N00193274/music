@@ -89,6 +89,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        //
+        $album->delete();
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
