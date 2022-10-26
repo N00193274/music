@@ -13,12 +13,23 @@
         "version": "2.0.0"
     },
     "paths": {
-        "/": {
+        "/api/albums": {
             "get": {
-                "description": "Home page",
+                "tags": [
+                    "Albums"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Displays all the albums",
+                "operationId": "735609843dcfb89ee4e12e340eddca25",
                 "responses": {
-                    "default": {
-                        "description": "Welcome page"
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
                     }
                 }
             }

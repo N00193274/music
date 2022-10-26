@@ -6,6 +6,7 @@ use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\AlbumResource;
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class AlbumController extends Controller
 {
@@ -80,6 +81,7 @@ class AlbumController extends Controller
 
         return new AlbumResource($album);
     }
+    
 
     /**
      * Remove the specified resource from storage.
