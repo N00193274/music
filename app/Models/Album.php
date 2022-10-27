@@ -12,4 +12,4 @@ class Album extends Model
 
 }
 
-// Model
+// Model is gone
