@@ -49,7 +49,16 @@ class AlbumController extends Controller
      *   tags={"Albums"},
      *   summary="Create new Album",
      *   description="Stores Album in DB",
-     *   @OA 
+     *   @OA\RequestBody(
+     *      required=true,
+     *      @OA\JsonContent(
+     *        required={"title", "genre", "artist", "releaseyear"},
+     *        @OA\Property(property="title", type="string", format="string", example="genesis"),
+     *        @OA\Property(property="genre", type="string", format="string", example="punk"),
+     *        @OA\Property(property="artist", type="string", format="string", example="t-dog"),
+     *        @OA\Property(property="releaseyear", type="string", format="string", example="2000")
+     *      )
+     *   )
      * )
      *
      * @param  \Illuminate\Http\Request  $request
