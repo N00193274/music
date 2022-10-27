@@ -10,6 +10,7 @@ use Illuminate\Http\Response;
 
 class AlbumController extends Controller
 {
+    // swagger functionality, declares the path for the browser where the info should be(albums path)
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +38,7 @@ class AlbumController extends Controller
     {
         // $albums = Album::all();
        // return new AlbumCollection($albums);
-        return new AlbumCollection(Album::all());
+        return new AlbumCollection(Album::all()); // Albumcollection is a resource that helps format the JSON data
     }
 
     /**
@@ -81,7 +82,33 @@ class AlbumController extends Controller
     }
 
     /**
+     * // Here I specify the id is how the api finds the target album in the table
      * Display the specified resource.
+     * @OA\Get(
+     *   path="/api/albums/{id}",
+     *   description="gets album by id",
+     *   tags={"Albums"},
+     *   @OA\Parameter(
+     *     name="id",
+     *     description="Album id",
+     *     in="path",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *    @OA\Response(
+     *        response=200,
+     *        description="success",
+     *      ),
+     *      @OA\Response(
+     *        response=401,
+     *        description="unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *        response=403,
+     *        description="Forbidden",
+     *      )
+     *   
+     * )
      *
      * @param  \App\Models\Album  $album
      * @return \Illuminate\Http\Response
@@ -92,7 +119,7 @@ class AlbumController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Album  $album
@@ -110,6 +137,30 @@ class AlbumController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * 
+     * @OA\Delete(
+     *   path="/api/albums/{id}",
+     *   operationId="destroy",
+     *   tags={"Albums"},
+     *   summary="Delete an Album",
+     *   description="Delete Album",
+     *   @OA\Parameter(
+     *     name="id",
+     *     in="path",
+     *     description="id of album",
+     *     required=true,
+     *     @OA\Schema(type="integer")
+     *   ),
+     *   @OA\Response(
+     *     response=Response::HTTP_NO_CONTENT,
+     *     description="Success",
+     *     @OA\JsonContent(
+     *       @OA\Property(property="status_code", type="integer", example="204"),
+     *       @OA\Property(property="data",type="object")
+     *       ),
+     *     )
+     *   )
+     * )
      *
      * @param  \App\Models\Album  $album
      * @return \Illuminate\Http\Response

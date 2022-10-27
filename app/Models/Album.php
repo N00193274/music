@@ -11,3 +11,5 @@ class Album extends Model
     protected $guarded =[];
 
 }
+
+// Model
