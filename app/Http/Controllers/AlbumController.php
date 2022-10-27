@@ -58,6 +58,13 @@ class AlbumController extends Controller
      *        @OA\Property(property="artist", type="string", format="string", example="t-dog"),
      *        @OA\Property(property="releaseyear", type="string", format="string", example="2000")
      *      )
+     *   ),
+     *   @OA\Response(
+     *     response=200, description="database updated",
+     *     @OA\JsonContent(
+     *       @OA\Property(property="status", type="integer", example=""),
+     *       @OA\Property(property="data",type="object")
+     *     )
      *   )
      * )
      *
