@@ -17,7 +17,9 @@ class ArtistFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->text(20),
+            'age' => fake()->text(5),
+            'pob' => fake()->text(10),
         ];
     }
 }

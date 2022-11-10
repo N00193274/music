@@ -17,9 +17,11 @@ class AlbumResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'genre' => $this->genre,
-            'artist' => $this->artist,
             'releaseyear' => $this->releaseyear,
+            'artist_id' => $this->artist->id,
+            'artist_name' => $this->artist->name,
+            'artist_age' => $this->artist->age,
+            'artist_pob' => $this->artist->pob
         ];
     }
 }

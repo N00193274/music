@@ -18,9 +18,8 @@ class AlbumFactory extends Factory
     {
         return [
             'title' => fake()->text(20),
-            'genre' => fake()->text(10),
-            'artist' =>fake()->text(20),
-            'release year' =>fake()->text(5),
+         //   'artist' =>fake()->text(20),
+            'release_year' =>fake()->text(5),
         ];
     }
 }

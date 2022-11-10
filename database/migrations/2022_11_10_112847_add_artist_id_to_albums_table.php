@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('albums', function (Blueprint $table) {
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('albums')->onUpdate('cascade')->onDelete('restrict');
+            //
         });
     }
 
@@ -27,8 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('albums', function (Blueprint $table) {
-            $table->dropForeign(['artist_id']);
-            $table->dropColumn('artist_id');
+            //
         });
     }
 };
