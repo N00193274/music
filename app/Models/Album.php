@@ -10,9 +10,9 @@ class Album extends Model
     use HasFactory;
     protected $guarded =[];
 
-    public function songs()
+    public function artist()
     {
-        return $this->hasMany(Song::class);
+        return $this->belongsTo(Artist::class);
     }
 
 }

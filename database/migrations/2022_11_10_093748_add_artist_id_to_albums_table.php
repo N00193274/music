@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('songs', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('genre');
-            $table->string('artist');
-            $table->string('album');
-            $table->timestamps();
+        Schema::table('albums', function (Blueprint $table) {
+            $table->unsignedBigInteger('artist_id');
+            $table->foreign('album_id')->references('id')->on('albums')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -30,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::table('albums', function (Blueprint $table) {
+            $table->dropForeign(['artist_id']);
+            $table->dropColumn('artist_id');
+        });
     }
 };
