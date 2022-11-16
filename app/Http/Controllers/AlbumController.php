@@ -38,8 +38,7 @@ class AlbumController extends Controller
     {
         // $albums = Album::all();
        // return new AlbumCollection($albums);
-       // return new AlbumCollection(Album::all()); 
-       return new AlbumCollection(Album::with('artist')->get());
+        return new AlbumCollection(Album::all()); // Albumcollection is a resource that helps format the JSON data
     }
 
     /**
@@ -54,10 +53,11 @@ class AlbumController extends Controller
      *   @OA\RequestBody(
      *      required=true,
      *      @OA\JsonContent(
-     *        required={"title", "release_year", "artist_id"},
+     *        required={"title", "genre", "artist", "releaseyear"},
      *        @OA\Property(property="title", type="string", format="string", example="genesis"),
-     *        @OA\Property(property="release_year", type="string", format="string", example="2000")
-     *        @OA\Property(property="artist_id", type="string", format="string", example="punk"),
+     *        @OA\Property(property="genre", type="string", format="string", example="punk"),
+     *        @OA\Property(property="artist", type="string", format="string", example="t-dog"),
+     *        @OA\Property(property="releaseyear", type="string", format="string", example="2000")
      *      )
      *   ),
      *   @OA\Response(
@@ -75,7 +75,7 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         $album = Album::create($request->only([
-            'title', 'release_year', 'artist_id'
+            'title', 'genre', 'artist', 'releaseyear'
         ]));
 
         return new AlbumResource($album);
@@ -128,7 +128,7 @@ class AlbumController extends Controller
     public function update(Request $request, Album $album)
     {
         $album->update($request->only([
-            'title', 'release_year', 'artist_id'
+            'title', 'genre', 'artist', 'releaseyear'
         ]));
 
         return new AlbumResource($album);
