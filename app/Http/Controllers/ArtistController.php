@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArtistCollection;
+use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        //
+        return new ArtistCollection(Artist::paginate(1));
     }
 
     /**
@@ -25,7 +27,13 @@ class ArtistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $artist = Artist::create([
+            'name' => $request->name,
+            'age' => $request->age,
+            'pob' => $request->pob
+        ]);
+
+        return new ArtistResource($artist);
     }
 
     /**
@@ -36,7 +44,7 @@ class ArtistController extends Controller
      */
     public function show(Artist $artist)
     {
-        //
+        return new ArtistResource($artist);
     }
 
     /**

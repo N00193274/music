@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\AlbumCollection;
 use App\Http\Resources\AlbumResource;
 use App\Models\Album;
+use App\Models\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -38,7 +39,8 @@ class AlbumController extends Controller
     {
         // $albums = Album::all();
        // return new AlbumCollection($albums);
-        return new AlbumCollection(Album::all()); // Albumcollection is a resource that helps format the JSON data
+       // return new AlbumCollection(Album::all()); // Albumcollection is a resource that helps format the JSON data
+       return new AlbumCollection(Album::with('Artist')->get());
     }
 
     /**
@@ -75,7 +77,10 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         $album = Album::create($request->only([
-            'title', 'genre', 'artist', 'releaseyear'
+            'title' => $request->title,
+            'genre' => $request->genre,
+            'artist' => $request->artist,
+            'releaseyear' => $request->address
         ]));
 
         return new AlbumResource($album);
@@ -128,7 +133,7 @@ class AlbumController extends Controller
     public function update(Request $request, Album $album)
     {
         $album->update($request->only([
-            'title', 'genre', 'artist', 'releaseyear'
+            'title', 'genre', 'artist', 'releaseyear', 'artist_id'
         ]));
 
         return new AlbumResource($album);
