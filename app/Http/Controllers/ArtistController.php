@@ -8,6 +8,7 @@ use App\Http\Resources\ArtistCollection;
 use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ArtistController extends Controller
 {
@@ -18,6 +19,7 @@ class ArtistController extends Controller
      */
     public function index()
     {
+        //return new ArtistCollection(Artist::all());
         return new ArtistCollection(Artist::paginate(1));
     }
 
